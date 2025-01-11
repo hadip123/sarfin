@@ -1,84 +1,206 @@
+@font-face {
+    font-family: "Lato";
+    src:
+        url("./assets/fonts/CustomFont-Bold.woff2") format("ttf"),
+        url("./assets/fonts/Lato/Lato-BlackItalic.ttf") format("ttf"),
+        url("./assets/fonts/Lato/Lato-Black.ttf") format("ttf"),
+        url("./assets/fonts/Lato/Lato-BoldItalic.ttf"),
+        url("./assets/fonts/Lato/Lato-Bold.ttf"),
+        url("./assets/fonts/Lato/Lato-Italic.ttf"),
+        url("./assets/fonts/Lato/Lato-LightItalic.ttf"),
+        url("./assets/fonts/Lato/Lato-Light.ttf"),
+        url("./assets/fonts/Lato/Lato-Regular.ttf"),
+        url("./assets/fonts/Lato/Lato-ThinItalic.ttf"),
+        url("./assets/fonts/Lato/Lato-Thin.ttf");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
 :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    /* Light theme colors */
+    --primary-50: #f0fdfa;
+    --primary-100: #ccfbf1;
+    --primary-200: #99f6e4;
+    --primary-300: #5eead4;
+    --primary-400: #2dd4bf;
+    --primary-500: #14b8a6;
+    --primary-600: #0d9488;
+    --primary-700: #0f766e;
+    --primary-800: #115e59;
+    --primary-900: #134e4a;
+
+    /* Light theme base colors */
+    --background: #ffffff;
+    --surface: #f9fafb;
+    --text-primary: #111827;
+    --text-secondary: #4b5563;
+    --border: #e5e7eb;
+    --error: #ef4444;
+    --warning: #f59e0b;
+    --success: #10b981;
+}
+
+/* Dark theme colors */
+[data-theme="dark"] {
+    --background: #0f172a;
+    --surface: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border: #334155;
+}
+
+/* Base styles */
+html {
+    font-family:
+        Lato,
+        system-ui,
+        -apple-system,
+        sans-serif;
     line-height: 1.5;
-    font-weight: 400;
-
-    color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
-
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-    font-weight: 500;
-    color: #646cff;
-    text-decoration: inherit;
-}
-a:hover {
-    color: #535bf2;
-}
-header {
-    padding: 20px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-main {
+body {
     margin: 0;
-    display: flex;
-    place-items: center;
-    min-width: 320px;
-    min-height: 100vh;
+    background-color: var(--background);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease;
 }
 
-h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-primary);
+    margin-top: 0;
+    font-weight: 600;
 }
 
-button {
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
+p {
+    color: var(--text-secondary);
+    margin-top: 0;
+}
+
+a {
+    color: var(--primary-600);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--primary-700);
+}
+
+/* Form elements */
+input,
+textarea,
+select {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    color: var(--text-primary);
+    transition: border-color 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 2px var(--primary-100);
+}
+
+/* Button styles */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
     font-weight: 500;
-    font-family: inherit;
-    background-color: #1a1a1a;
+    transition: all 0.2s ease;
     cursor: pointer;
-    transition: border-color 0.25s;
-}
-button:hover {
-    border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
+    border: none;
 }
 
+.btn-primary {
+    background-color: var(--primary-600);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-700);
+}
+
+.btn-secondary {
+    background-color: var(--surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    background-color: var(--background);
+}
+
+/* Card styles */
 .card {
-    padding: 2em;
+    background-color: var(--surface);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-#app {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
+/* Utils */
+.text-primary {
+    color: var(--text-primary);
 }
 
-@media (prefers-color-scheme: light) {
-    :root {
-        color: #213547;
-        background-color: #ffffff;
+.text-secondary {
+    color: var(--text-secondary);
+}
+
+.bg-surface {
+    background-color: var(--surface);
+}
+
+.border {
+    border: 1px solid var(--border);
+}
+
+/* Responsive container */
+.container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+@media (min-width: 640px) {
+    .container {
+        max-width: 640px;
     }
-    a:hover {
-        color: #747bff;
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 768px;
     }
-    button {
-        background-color: #f9f9f9;
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1024px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
     }
 }
